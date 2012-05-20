@@ -1,0 +1,7 @@
+.eventTable td{
+	vertical-align:middle;
+}
+.eventTable td:last-child
+{
+	text-align:right;
+}
