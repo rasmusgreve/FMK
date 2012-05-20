@@ -33,14 +33,24 @@ class CreateEventPage implements iPage
               
         //Creation
         $creationtoken = time();
-        mysql_query("INSERT INTO `event` (`artist`, `venue`, `creationtoken`) VALUES ('{$artist['id']}', '{$venue['id']}', '$creationtoken');");
+        mysql_query("INSERT INTO `event` (`artist`, `venue`, `date`, `creationtoken`) VALUES ('{$artist['id']}', '{$venue['id']}', '".date( 'Y-m-d H:i:s')."', '$creationtoken');");
         $event_query = mysql_query("SELECT `id` FROM `event` WHERE `creationtoken` = '$creationtoken' LIMIT 1;");
-        $eventid = mysql_result($event_query, 0, 0);
-        
+		$eventid = mysql_result($event_query, 0, 0);
+		
+		$this->setContact('contact', $venue['id'], $eventid);
+		$this->setContact('contact_technique', $venue['id'], $eventid);
+		$this->setContact('contact_pr', $venue['id'], $eventid);
+		$this->setContact('contact_tickets', $venue['id'], $eventid);
+		
         //Redirection
         return "./event/$eventid";
     }
     
+	private function setContact($type, $venueid, $eventid)
+	{
+		mysql_query("UPDATE `event` e SET e.`$type` = (SELECT `$type` FROM `venue` v WHERE v.`id` = '$venueid' LIMIT 1) WHERE e.`id` = '$eventid' LIMIT 1;");
+	}
+	
     public function show($command, $params, $user)
     {
         $artists_query = mysql_query("SELECT * FROM `artist`;");

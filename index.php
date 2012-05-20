@@ -37,9 +37,10 @@ foreach ($pages as $page)
 }
 
 $reload = $currentpage->consumePost($command, $params,$currentuser);
-if ($reload != false)
+if ($reload !== false)
 {
     header("Location: $reload");
+	die();
 }
 $basefolder = explode('index.php',$_SERVER['PHP_SELF']);
 $basefolder = $basefolder[0];
@@ -78,7 +79,12 @@ $baseurl = 'http://'.$_SERVER['SERVER_NAME'].$basefolder;
   </head>
 
   <body>
-
+	<script src="js/jquery.js"></script>
+    <script src="js/bootstrap.js"></script>
+    <script src="js/bootstrap-typeahead.js"></script>
+    <script src="js/bootstrap-datepicker.js"></script>
+    <script src="js/bootstrap-collapse.js"></script>
+	
     <?php 
     $nav = new Navigation();
     $nav->show($command,$params,$currentuser); 
@@ -87,14 +93,6 @@ $baseurl = 'http://'.$_SERVER['SERVER_NAME'].$basefolder;
 
     <?php $currentpage->show($command, $params,$currentuser);?>
 
-      
-    <script src="js/jquery.js"></script>
-    <script src="js/bootstrap.js"></script>
-    <script src="js/bootstrap-typeahead.js"></script>
-    <script src="js/bootstrap-datepicker.js"></script>
-    <script src="js/bootstrap-collapse.js"></script>
-    
-    <script src="js/event.js"></script>
   </body>
 </html>
 
