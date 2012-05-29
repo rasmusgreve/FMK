@@ -18,7 +18,8 @@ $pages = array(
     array('title' => 'Ny koncert',      'command' => 'newevent','usertype' => 'fmk',                 'page' => new CreateEventPage()),
     array('title' => 'Koncerter',       'command' => 'event',   'usertype' => 'fmk/artist/venue',    'page' => new EventPage()),
     array('title' => 'Indstillinger',   'command' => 'settings','usertype' => 'fmk/artist/venue',    'page' => new SettingsPage()),
-    array('title' => 'Log ud',          'command' => 'logout',  'usertype' => 'fmk/artist/venue',    'page' => new LogoutPage())
+    array('title' => 'Log ud',          'command' => 'logout',  'usertype' => 'fmk/artist/venue',    'page' => new LogoutPage()),
+    array('title' => 'Se koncert',      'command' => 'view',    'usertype' => 'fmk/artist/venue',    'page' => new ViewEventPage())
 );
 
 

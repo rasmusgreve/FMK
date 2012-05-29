@@ -10,6 +10,7 @@ include "./classes/pages/OverviewPage.php";
 include "./classes/pages/EventPage.php";
 include "./classes/pages/SettingsPage.php";
 include "./classes/pages/LogoutPage.php";
+include "./classes/pages/ViewEventPage.php";
 include "config.php";
 session_start();
 
