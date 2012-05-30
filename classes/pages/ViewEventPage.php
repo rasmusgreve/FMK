@@ -194,15 +194,7 @@ class ViewEventPage implements iPage
                     <div class="control-group">
                         <label class="control-label">Synlighed</label>
                         <div class="controls">
-                            <label class="radio">
-                                <input type="radio"  name="visibility" value="public" <?php echo ($this->visibility == "public") ? "checked":"";?>> Announced
-                            </label>
-                            <label class="radio">
-                                <input type="radio" name="visibility" value="tba" <?php echo ($this->visibility == "tba") ? "checked":"";?>> TBA
-                            </label>
-                            <label class="radio">
-                                <input type="radio" name="visibility" value="reservation" <?php echo ($this->visibility == "reservation") ? "checked":"";?>> Reservation
-                            </label>
+                        <span class='uneditable-input input-mini'> <?php echo $this->visibility;?>  </span>
                         </div>
                     </div>
 
