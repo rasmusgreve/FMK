@@ -72,13 +72,13 @@ class CreateEventPage implements iPage
 <div class="container">
     <div class='row'>
         <div class=''>
-            <form class="well form-horizontal" method="post" action="./newevent">
+            <form class="well form-horizontal" method="post" action="./newevent" autocomplete="off">
                 <fieldset>
                     <legend>Tilf&oslash;j ny koncert</legend>
                     <div class="control-group">
                         <label class="control-label" for="artist">Kunstner</label>
                         <div class="controls">
-                            <input type="text" value="<?php echo $this->artist_name;?>" id='artist' class="input-xlarge" name='artist' data-provide="typeahead" data-items="4" data-source='[<?php echo implode(",",$artists);?>]'>
+                            <input type="text" autocomplete="off" value="<?php echo $this->artist_name;?>" id='artist' class="input-xlarge" name='artist' data-provide="typeahead" data-items="4" data-source='[<?php echo implode(",",$artists);?>]'>
                             <?php if ($this->artist_error) { ?>
                             <p class="help-block"><i class="icon-exclamation-sign"></i> Ugyldig kunstner</p>
                             <?php } ?>
@@ -88,7 +88,7 @@ class CreateEventPage implements iPage
                     <div class="control-group">
                         <label class="control-label" for="venue">Venue</label>
                         <div class="controls">
-                            <input type="text" value="<?php echo $this->venue_name;?>" id='venue' class="input-xlarge" name='venue' data-provide="typeahead" data-items="4" data-source='[<?php echo implode(",",$venues);?>]'>
+                            <input type="text" autocomplete="off" value="<?php echo $this->venue_name;?>" id='venue' class="input-xlarge" name='venue' data-provide="typeahead" data-items="4" data-source='[<?php echo implode(",",$venues);?>]'>
                             <?php if ($this->venue_error) { ?>
                             <p class="help-block"><i class="icon-exclamation-sign"></i> Ugyldigt venue</p>
                             <?php } ?>

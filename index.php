@@ -7,6 +7,7 @@ include "./classes/Navigation.php";
 include "./classes/pages/LoginPage.php";
 include "./classes/pages/CreateEventPage.php";
 include "./classes/pages/OverviewPage.php";
+include "./classes/pages/EditEventPage.php";
 include "./classes/pages/EventPage.php";
 include "./classes/pages/SettingsPage.php";
 include "./classes/pages/LogoutPage.php";

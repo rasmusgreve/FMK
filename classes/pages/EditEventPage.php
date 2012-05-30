@@ -1,6 +1,6 @@
 <?php
 
-class EventPage implements iPage
+class EditEventPage implements iPage
 {
     private $date, $time, $visibility, $schedule, $postercount, $honorarium, $provision, $pricemodel, $contact, $contact_technique, $contact_pr, $contact_tickets;
     private $eventid = -1;
@@ -118,15 +118,15 @@ class EventPage implements iPage
         ?>
 <div class="container">
     <div class='row'>
-        <div class='well'>
+        <div class=''>
             <form class="well form-horizontal" method="post" autocomplete="off">
                 <input type="hidden" name="id" value="<?php echo $this->eventid; ?>">
                 <fieldset>
                     <legend>Koncert</legend>
                     <div class="control-group">
-                        <span class='pull-right'>Kunstner</span>
+                        <label class="control-label" for="artist">Kunstner</label>
                         <div class="controls">
-                            <?php echo $this->artistname;?>
+                            <span class="uneditable-input"><?php echo $this->artistname;?></span>
                         </div>
                     </div>
 
