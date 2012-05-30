@@ -198,7 +198,7 @@ class EventPage implements iPage
                                 <input type="radio"  name="visibility" value="public" <?php echo ($this->visibility == "public") ? "checked":"";?>> Announced
                             </label>
                             <label class="radio">
-                                <input type="radio" name="visibility" value="tba" <?php echo ($this->visibility == "tba") ? "checked":"";?>> TBA
+                                <input type="radio" name="visibility" value="TBA" <?php echo ($this->visibility == "tba") ? "checked":"";?>> TBA
                             </label>
                             <label class="radio">
                                 <input type="radio" name="visibility" value="reservation" <?php echo ($this->visibility == "reservation") ? "checked":"";?>> Reservation
