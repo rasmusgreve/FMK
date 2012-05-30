@@ -179,8 +179,8 @@ class ViewEventPage implements iPage
                     <div class="control-group">
                         <label class="control-label" for="date">Dato / Tidspunkt</label>
                         <div class="controls">
-                            <input name="date" data-datepicker="datepicker" class="input-small" type="text" value="<?php echo $this->date;?>" />
-                            <input name="time" type='text' class='input-mini' placeholder='Tid' value="<?php echo $this->time;?>" /> F.eks. 17:45
+                            <span name="date" class="uneditable-input input-small" type="text" ><?php echo $this->date;?> </span>
+                            <span name="time" type='text' class='uneditable-input input-mini'><?php echo $this->time;?> </span>
                         </div>
                     </div>
 
@@ -253,8 +253,6 @@ class ViewEventPage implements iPage
                     <p>Samlet pris</p>
                     <p class='pull-right' id='total_moms'>0,00</p>
                     <p>Moms udg&oslash;r</p>
-
-                    <hr />
 <!--
                     <b>Handlinger</b><br>
                     <a class='span1 btn' style='text-align:center;'>
@@ -271,14 +269,7 @@ class ViewEventPage implements iPage
                         <p>Kontrakt endelig</p>
                     </a>
                     -->
-                    <div class="control-group">
-                        <div class="controls">
-                            <input type="submit" value="Gem ændringer" class="btn btn-primary btn-large">
-                            <a href="./" class="btn btn-large">Annuller</a>
-                            <input style='float:right;' type="submit" name='delete' onclick='return confirm("Er du sikker på at du vil slette arrangement med <?php echo $this->artistname;?> på <?php echo $this->venuename;?>? \nDenne handling kan IKKE fortrydes!")' value="Slet arrangement" class="btn btn-danger btn-large">
-                        </div>
-                    </div>
-					
+	
                 </fieldset>
             </form>
         </div>
