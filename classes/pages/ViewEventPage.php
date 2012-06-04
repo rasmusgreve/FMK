@@ -124,21 +124,21 @@ class ViewEventPage implements iPage
                 <fieldset>
                     <legend>Koncert</legend>
                     <div class="control-group">
-                        <label class="control-label" for="artist">Kunstner</label>
+                        <label class="control-label" for="artist">Kunstner:</label>
                         <div class="controls">
                             <span class="uneditable-input"><?php echo $this->artistname;?></span>
                         </div>
                     </div>
 
                     <div class="control-group">
-                        <label class="control-label" for="venue">Venue</label>
+                        <label class="control-label" for="venue">Venue:</label>
                         <div class="controls">
                             <span class="uneditable-input"><?php echo $this->venuename;?></span>
                         </div>
                     </div>
 
                     <div class="control-group">
-                        <label class="control-label" for="contact">Kontaktperson</label>
+                        <label class="control-label" for="contact">Kontaktperson:</label>
                         <div class="controls">
                             <select id="contact" name="contact">
 								<?php echo $this->getPossibleContacts($this->contact);?>
@@ -177,7 +177,7 @@ class ViewEventPage implements iPage
                     </div>
 
                     <div class="control-group">
-                        <label class="control-label" for="date">Dato / Tidspunkt</label>
+                        <label class="control-label" for="date">Dato / Tidspunkt:</label>
                         <div class="controls">
                             <span name="date" class="uneditable-input input-small" type="text" ><?php echo $this->date;?> </span>
                             <span name="time" type='text' class='uneditable-input input-mini'><?php echo $this->time;?> </span>
@@ -185,21 +185,21 @@ class ViewEventPage implements iPage
                     </div>
 
                     <div class="control-group">
-                        <label class="control-label" for="schedule">Tidsplan</label>
+                        <label class="control-label" for="schedule">Tidsplan:</label>
                         <div class="controls">
                             <textarea name="schedule" rows='10' style='max-width:250px;max-height:300px;'><?php echo $this->schedule; //TODO: REMOVE STYLE?></textarea>
                         </div>
                     </div>
 
                     <div class="control-group">
-                        <label class="control-label">Synlighed</label>
+                        <label class="control-label">Synlighed:</label>
                         <div class="controls">
                         <span class='uneditable-input input-mini'> <?php echo $this->visibility;?>  </span>
                         </div>
                     </div>
 
                     <div class="control-group">
-                        <label class="control-label" for="postercount">Antal plakater</label>
+                        <label class="control-label" for="postercount">Antal plakater:</label>
                         <div class="controls">
                             <span class='uneditable-input input-mini' id="postercount" name="postercount"> <?php echo $this->postercount;?>  </span>
                         </div>
@@ -208,7 +208,7 @@ class ViewEventPage implements iPage
                     <hr/>
 
                     <div class="control-group">
-                        <label class="control-label" for="honorar">Honorar</label>
+                        <label class="control-label" for="honorar">Honorar:</label>
                         <div class="controls">
                             <div class="input-append">
                                 <span class="input-small uneditable-input" id="honorar" name="honorarium"><?php echo $this->honorarium;?></span>
@@ -218,7 +218,7 @@ class ViewEventPage implements iPage
                     </div>
 
                     <div class="control-group">
-                        <label class="control-label" for="provision">Provision</label>
+                        <label class="control-label" for="provision">Provision:</label>
                         <div class="controls">
                         <div class="input-append">
                         <span class="uneditable-input input-small" id="provision" name="provision"><?php echo $this->provision;?></span>
@@ -231,14 +231,9 @@ class ViewEventPage implements iPage
 
                     <hr />
 					<div class="control-group">
-                        <label class="control-label" for="pricemodel">Prismodel</label>
+                        <label class="control-label" for="pricemodel">Prismodel:</label>
                         <div class="controls">
-                            <label class="radio">
-                                <input type="radio" name="pricemodel" id="pricemodel" value="flatfee" <?php echo ($this->pricemodel == "flatfee") ? "checked":"";?>> Flat fee
-                            </label>
-                            <label class="radio">
-                                <input type="radio" name="pricemodel" value="bonus" <?php echo ($this->pricemodel == "bonus") ? "checked":"";?>> Bonus
-                            </label>
+                        <span class="uneditable-input input-small"> <?php echo ($this->pricemodel)?> </span>
                         </div>
                     </div>
                     <p class='pull-right' id='total_price'>0,00</p>
@@ -261,7 +256,13 @@ class ViewEventPage implements iPage
                         <p>Kontrakt endelig</p>
                     </a>
                     -->
-	
+	                    <div class="control-group">
+                        <div class="controls">
+                        <?php global $currentuser; if ($currentuser->type == User::USERTYPE_FMK) {?>
+                            <a href="./event/<?php echo $this->eventid;?>" class="btn btn-large" style="float:right">Rediger</a>
+                            <?php }?>
+                        </div>
+                    </div>
                 </fieldset>
             </form>
         </div>
