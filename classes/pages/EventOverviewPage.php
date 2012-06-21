@@ -9,7 +9,6 @@ class EventOverviewPage implements iPage
     
     public function show($command, $params, $user)
     {
-		echo "Corresponding: " . User::Current()->corresponding_id;
 		$where = "";
 		if (User::Current()->type == User::USERTYPE_FMK)
 			$where = "";
@@ -41,8 +40,6 @@ class EventOverviewPage implements iPage
        ?>
        </tbody>
       </table>
-      <hr />
-      <h1>Seneste opdateringer</h1>
     </div> <!-- /container -->
 <?php
     }
