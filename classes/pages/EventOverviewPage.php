@@ -16,7 +16,7 @@ class EventOverviewPage implements iPage
 		if (User::Current()->type == User::USERTYPE_ARTIST)
 			$where = "AND ".User::Current()->corresponding_id." = a.`id`";
 		if (User::Current()->type == User::USERTYPE_VENUE)
-			$where = "AND ".User::Current()->corresponding_id." = e.`id`";
+			$where = "AND ".User::Current()->corresponding_id." = v.`id`";
 			
 		$q = mysql_query("SELECT e.*, a.`name` as `artist_name`, v.`name` as `venue_name` FROM `event` e, `artist` a, `venue` v
 			WHERE e.`venue` = v.`id` AND e.`artist` = a.`id` $where ORDER BY e.`date` ASC LIMIT 10;");
