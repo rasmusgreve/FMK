@@ -9,40 +9,76 @@ class Event
 	
 	}
 	
-    public function __construct($id)
-    {
-        $this->id = $id;
-    }
-	
-	public function Load()
+	public static function FromForm()
 	{
-		if ($id == 0)
-			return false;
+		$n = new Event();
+		$n->id = $_POST['event_id'];
+		$n->date = $_POST['date'];
+		$n->time = $_POST['time'];
+		$n->visibility = $_POST['visibility'];
+		$n->schedule = $_POST['schedule'];
+		$n->postercount = $_POST['postercount'];
+		$n->honorarium = $_POST['honorarium'];
+		$n->provision = $_POST['provision'];
+		$n->pricemodel = $_POST['pricemodel'];
+		$n->contact = $_POST['contact'];
+		$n->contact_technique = $_POST['contact_technique'];
+		$n->contact_pr = $_POST['contact_pr'];
+		$n->contact_tickets = $_POST['contact_tickets'];
+		$n->artist = $_POST['artist'];
+        $n->venue = $_POST['venue'];
+		return $n;
+	}
+	
+	public static function FromDB($id)
+	{
+		if ($id == 0 || !ctype_digit($id))
+			return null;
 		
 		$eventquery = mysql_query("SELECT * FROM `event` WHERE `id` = '$id' LIMIT 1;");
         if (mysql_num_rows($eventquery) != 1)
-        {
-            return false;
-        }
+            return null;
+			
         $event = mysql_fetch_assoc($eventquery);
-        $this->date = $event['date'];
-        $this->time = $event['time'];
-        $this->visibility = $event['visibility'];
-        $this->schedule = $event['schedule'];
-        $this->postercount = $event['postercount'];
-        $this->honorarium = $event['honorarium'];
-        $this->provision = $event['provision'];
-        $this->pricemodel = $event['pricemodel'];
-        $this->contact = $event['contact'];
-        $this->contact_technique = $event['contact_technique'];
-        $this->contact_pr = $event['contact_pr'];
-        $this->contact_tickets = $event['contact_tickets'];
-        $this->artist = $event['artist'];
-        $this->venue = $event['venue'];
+		
+		$n = new Event();
+        $n->id = $id;
+        $n->date = $event['date'];
+        $n->time = $event['time'];
+        $n->visibility = $event['visibility'];
+        $n->schedule = $event['schedule'];
+        $n->postercount = $event['postercount'];
+        $n->honorarium = $event['honorarium'];
+        $n->provision = $event['provision'];
+        $n->pricemodel = $event['pricemodel'];
+        $n->contact = $event['contact'];
+        $n->contact_technique = $event['contact_technique'];
+        $n->contact_pr = $event['contact_pr'];
+        $n->contact_tickets = $event['contact_tickets'];
+        $n->artist = $event['artist'];
+        $n->venue = $event['venue'];
+		return $n;
 	}
 	
 	public function Save()
 	{
+	//if 
+	
+		$n->date = $_POST['date'];
+		$n->time = $_POST['time'];
+		$n->visibility = $_POST['visibility'];
+		$n->schedule = $_POST['schedule'];
+		$n->postercount = $_POST['postercount'];
+		$n->honorarium = $_POST['honorarium'];
+		$n->provision = $_POST['provision'];
+		$n->pricemodel = $_POST['pricemodel'];
+		$n->contact = $_POST['contact'];
+		$n->contact_technique = $_POST['contact_technique'];
+		$n->contact_pr = $_POST['contact_pr'];
+		$n->contact_tickets = $_POST['contact_tickets'];
+		$n->artist = $_POST['artist'];
+        $n->venue = $_POST['venue'];
+	
 		mysql_query("UPDATE `event` SET 
                     `date` = '$this->date', 
                     `time` = '$this->time',
