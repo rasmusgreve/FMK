@@ -2,11 +2,12 @@
 ini_set('display_errors','On'); 
 error_reporting(E_ALL);
 include "./classes/User.php";
+include "./classes/Event.php";
 include "./classes/Page.php";
 include "./classes/Navigation.php";
 include "./classes/pages/LoginPage.php";
 include "./classes/pages/CreateEventPage.php";
-include "./classes/pages/OverviewPage.php";
+include "./classes/pages/EventOverviewPage.php";
 include "./classes/pages/EditEventPage.php";
 include "./classes/pages/EventPage.php";
 include "./classes/pages/SettingsPage.php";

@@ -2,7 +2,7 @@
 
 class Event
 {    
-	private $date, $time, $visibility, $schedule, $postercount, $honorarium, $provision, $pricemodel, $contact, $contact_technique, $contact_pr, $contact_tickets $id, $artist, $venue;
+	public $date, $time, $visibility, $schedule, $postercount, $honorarium, $provision, $pricemodel, $contact, $contact_technique, $contact_pr, $contact_tickets, $id, $artist, $venue;
 	
 	public function __construct()
 	{
@@ -12,21 +12,21 @@ class Event
 	public static function FromForm()
 	{
 		$n = new Event();
-		$n->id = $_POST['event_id'];
-		$n->date = $_POST['date'];
-		$n->time = $_POST['time'];
-		$n->visibility = $_POST['visibility'];
-		$n->schedule = $_POST['schedule'];
-		$n->postercount = $_POST['postercount'];
-		$n->honorarium = $_POST['honorarium'];
-		$n->provision = $_POST['provision'];
-		$n->pricemodel = $_POST['pricemodel'];
-		$n->contact = $_POST['contact'];
-		$n->contact_technique = $_POST['contact_technique'];
-		$n->contact_pr = $_POST['contact_pr'];
-		$n->contact_tickets = $_POST['contact_tickets'];
-		$n->artist = $_POST['artist'];
-        $n->venue = $_POST['venue'];
+		$n->id = mysql_real_escape_string($_POST['event_id']);
+		$n->date = mysql_real_escape_string($_POST['date']);
+		$n->time = mysql_real_escape_string($_POST['time']);
+		$n->visibility = mysql_real_escape_string($_POST['visibility']);
+		$n->schedule = mysql_real_escape_string($_POST['schedule']);
+		$n->postercount = mysql_real_escape_string($_POST['postercount']);
+		$n->honorarium = mysql_real_escape_string($_POST['honorarium']);
+		$n->provision = mysql_real_escape_string($_POST['provision']);
+		$n->pricemodel = mysql_real_escape_string($_POST['pricemodel']);
+		$n->contact = mysql_real_escape_string($_POST['contact']);
+		$n->contact_technique = mysql_real_escape_string($_POST['contact_technique']);
+		$n->contact_pr = mysql_real_escape_string($_POST['contact_pr']);
+		$n->contact_tickets = mysql_real_escape_string($_POST['contact_tickets']);
+		$n->artist = mysql_real_escape_string($_POST['artist']);
+        $n->venue = mysql_real_escape_string($_POST['venue']);
 		return $n;
 	}
 	
@@ -62,61 +62,32 @@ class Event
 	
 	public function Save()
 	{
-	//if 
-	
-		$n->date = $_POST['date'];
-		$n->time = $_POST['time'];
-		$n->visibility = $_POST['visibility'];
-		$n->schedule = $_POST['schedule'];
-		$n->postercount = $_POST['postercount'];
-		$n->honorarium = $_POST['honorarium'];
-		$n->provision = $_POST['provision'];
-		$n->pricemodel = $_POST['pricemodel'];
-		$n->contact = $_POST['contact'];
-		$n->contact_technique = $_POST['contact_technique'];
-		$n->contact_pr = $_POST['contact_pr'];
-		$n->contact_tickets = $_POST['contact_tickets'];
-		$n->artist = $_POST['artist'];
-        $n->venue = $_POST['venue'];
-	
-		mysql_query("UPDATE `event` SET 
-                    `date` = '$this->date', 
-                    `time` = '$this->time',
-                    `visibility` = '$this->visibility',
-                    `schedule` = '$this->schedule',
-                    `postercount` = '$this->postercount',
-                    `honorarium` = '$this->honorarium',
-                    `provision` = '$this->provision',
-                    `pricemodel` = '$this->pricemodel'
+		if 	($this->id == 0)
+		{
+			mysql_query("INSERT INTO `fmk`.`event` (`artist`, `venue`, `date`, `time`, `visibility`, `schedule`, `postercount`, `honorarium`, `provision`, `pricemodel`, `contact`, `contact_technique`, `contact_pr`, `contact_tickets`, `creationtoken`) VALUES ({$this->artist},{$this->venue},{$this->date},{$this->time},{$this->visibility},{$this->schedule},{$this->postercount},{$this->honorarium},{$this->provision},{$this->pricemodel},{$this->contact},{$this->contact_technique},{$this->contact_pr},{$this->contact_tickets},{$this->creationtoken});");
+			$q = mysql_query("SELECT `id` FROM `event` WHERE `creationtoken` = '{$this->creationtoken}' LIMIT 1;");
+			$this->id = mysql_result($q,0,0);
+		}
+		else
+		{
+			mysql_query("UPDATE `event` SET 
+					`artist` = '{$this->artist}',
+					`venue` = '{$this->venue}',
+					`date` = '{$this->date}',
+					`time` = '{$this->time}',
+					`visibility` = '{$this->visibility}',
+					`schedule	` = '{$this->schedule}',
+					`postercount` = '{$this->postercount}',
+					`honorarium` = '{$this->honorarium}',
+					`provision` = '{$this->provision}',
+					`pricemodel` = '{$this->pricemodel}',
+					`contact` = '{$this->contact}',
+					`contact_technique` = '{$this->contact_technique}',
+					`contact_pr` = '{$this->contact_pr}',
+					`contact_tickets` = '{$this->contact_tickets}'
                     WHERE `id` = '$this->eventid';");
+		}
 	}
-	
-	public function Date()				{return $this->date;}
-	public function Time()				{return $this->time;}
-	public function Visibility()		{return $this->visibility;}
-	public function Schedule()			{return $this->schedule;}
-	public function PosterCount()		{return $this->postercount;}
-	public function Honorarium()		{return $this->honorarium;}
-	public function Provision()			{return $this->provision;}
-	public function PriceModel()		{return $this->pricemodel;}
-	public function Contact()			{return $this->contact;}
-	public function ContactTechnique()	{return $this->contact_technique;}
-	public function ContactPR()			{return $this->contact_pr;}
-	public function ContactTickets()	{return $this->contact_tickets;}
-	
-	public function SetDate($v)				{$this->date = $v;}
-	public function SetTime($v)				{$this->time = $v;}
-	public function SetVisibility($v)		{$this->visibility = $v;}
-	public function SetSchedule($v)			{$this->schedule = $v;}
-	public function SetPosterCount($v)		{$this->postercount = $v;}
-	public function SetHonorarium($v)		{$this->honorarium = $v;}
-	public function SetProvision($v)		{$this->provision = $v;}
-	public function SetPriceModel($v)		{$this->pricemodel = $v;}
-	public function SetContact($v)			{$this->contact = $v;}
-	public function SetContactTechnique($v)	{$this->contact_technique = $v;}
-	public function SetContactPR($v)		{$this->contact_pr = $v;}
-	public function SetContactTickets($v)	{$this->contact_tickets = $v;}
-    
 }
 
 ?>

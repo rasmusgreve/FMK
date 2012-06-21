@@ -26,8 +26,9 @@ class CreateEventPage implements iPage
         if (mysql_num_rows($venue_query) == 0)
             $this->venue_error = true;
         if ($this->artist_error || $this->venue_error)
-            return false; //Redisplay the page to inform the user
+            return false; //Redisplay the page to inform the user //TODO!!
         
+		//TODO: Validation!
         $artist = mysql_fetch_assoc($artist_query);
         $venue = mysql_fetch_assoc($venue_query);
               

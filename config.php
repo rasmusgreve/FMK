@@ -14,7 +14,7 @@ mysql_select_db($database[3]);
 //ANY
 $pages = array(
     array('title' => 'Log ind',         'command' => '_ANY_',   'usertype' => 'none',                'page' => new LoginPage()),
-    array('title' => 'Forside',         'command' => '',        'usertype' => 'fmk/artist/venue',    'page' => new OverviewPage()),
+    array('title' => 'Forside',         'command' => '',        'usertype' => 'fmk/artist/venue',    'page' => new EventOverviewPage()),
     array('title' => 'Ny koncert',      'command' => 'newevent','usertype' => 'fmk',                 'page' => new CreateEventPage()),
     array('title' => 'Koncerter',       'command' => 'event',   'usertype' => 'fmk/artist/venue',    'page' => new EditEventPage()),
     array('title' => 'Indstillinger',   'command' => 'settings','usertype' => 'fmk/artist/venue',    'page' => new SettingsPage()),

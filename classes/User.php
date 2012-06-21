@@ -8,6 +8,7 @@ class User
     const USERTYPE_VENUE = 'venue';
     
     public $type, $id, $username, $email;
+	public $corresponding_id;
     
     public static function Current()
     {
@@ -18,12 +19,13 @@ class User
         return $_SESSION['currentuser'];
     }
     
-    private function __construct($type, $id = 0, $username = '', $email = '')
+    private function __construct($type, $id = 0, $username = '', $email = '', $corresponding_id = null)
     {
         $this->type = $type;
         $this->id = $id;
         $this->username = $username;
         $this->email = $email;
+        $this->corresponding_id = $corresponding_id;
     }
     
     public static function None()
@@ -39,7 +41,7 @@ class User
         if (mysql_num_rows($query) == 0)
             return new User(self::USERTYPE_NONE);
         $row = mysql_fetch_assoc($query);
-        $newUser = new User($row['type'],$row['id'],$row['username'],$row['email']);
+        $newUser = new User($row['type'],$row['id'],$row['username'],$row['email'],$row['corresponding_id']);
         $_SESSION['currentuser'] = $newUser;
         return $newUser;
     }
