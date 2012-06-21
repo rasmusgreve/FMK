@@ -259,7 +259,7 @@ class ViewEventPage implements iPage
 	                    <div class="control-group">
                         <div class="controls">
                         <?php global $currentuser; if ($currentuser->type == User::USERTYPE_FMK) {?>
-                            <a href="./event/<?php echo $this->eventid;?>" class="btn btn-large" style="float:right">Rediger</a>
+                            <a href="./edit/<?php echo $this->eventid;?>" class="btn btn-large" style="float:right">Rediger</a>
                             <?php }?>
                         </div>
                     </div>

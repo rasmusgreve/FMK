@@ -35,7 +35,7 @@ class EventOverviewPage implements iPage
        <?php
 	   while ($res = mysql_fetch_assoc($q))
 	   {
-			echo "<tr><td>{$res['artist_name']}</td><td>{$res['venue_name']}</td><td>{$res['date']}</td><td>Todo</td><td></td>";
+			echo "<tr><td>{$res['artist_name']}</td><td>{$res['venue_name']}</td><td>{$res['date']}</td><td>Todo</td><td><a class='btn btn-primary' href='./event/{$res['id']}'>Vis</td>";
 	   }
        ?>
        </tbody>
