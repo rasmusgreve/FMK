@@ -1,5 +1,6 @@
 <?php
 ini_set('display_errors','On'); 
+ini_set("session.use_only_cookies", "on");
 date_default_timezone_set("Europe/Copenhagen");
 
 error_reporting(E_ALL);
