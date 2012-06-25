@@ -1,6 +1,7 @@
 <?php
 ini_set('display_errors','On'); 
 date_default_timezone_set("Europe/Copenhagen");
+session_start();
 error_reporting(E_ALL);
 include "./classes/User.php";
 include "./classes/Event.php";
@@ -17,7 +18,7 @@ include "./classes/pages/LogoutPage.php";
 include "./classes/pages/ViewEventPage.php";
 include "config.php";
 include "pages.php";
-session_start();
+
 
 
 ///////////////////////////////////////////////////////
