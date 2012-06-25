@@ -12,6 +12,10 @@ class User
     
     public static function Current()
     {
+		print_r($_SESSION);
+		echo "<br>";
+		echo "<br>";
+		echo "<br>";
         if (!isset($_SESSION['currentuser']))
         {
             $_SESSION['currentuser'] = serialize(self::None());
