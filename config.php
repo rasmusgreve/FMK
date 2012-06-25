@@ -1,5 +1,5 @@
 <?php
-
+//TODO: Move config to somewhere outside the web root
 $databases = array(
     array('localhost','root','','fmk'),
 	array('nas.emilnygaard.com','fmk','fmk','fmk'),
@@ -9,18 +9,5 @@ $database = $databases[1];
 
 mysql_connect($database[0],$database[1],$database[2]);
 mysql_select_db($database[3]);
-
-
-//ANY
-$pages = array(
-    array('title' => 'Log ind',         'command' => '_ANY_',   'usertype' => 'none',                'page' => new LoginPage()),
-    array('title' => 'Forside',         'command' => '',        'usertype' => 'fmk/artist/venue',    'page' => new EventOverviewPage()),
-    array('title' => 'Ny koncert',      'command' => 'newevent','usertype' => 'fmk',                 'page' => new CreateEventPage()),
-    array('title' => 'Èn koncert',      'command' => 'event',   'usertype' => 'fmk/artist/venue',    'page' => new ViewEventPage()),
-    array('title' => 'Indstillinger',   'command' => 'settings','usertype' => 'fmk/artist/venue',    'page' => new SettingsPage()),
-    array('title' => 'Log ud',          'command' => 'logout',  'usertype' => 'fmk/artist/venue',    'page' => new LogoutPage()),
-    array('title' => 'Rediger koncert', 'command' => 'edit',    'usertype' => 'fmk/artist/venue',    'page' => new EditEventPage())
-);
-
 
 ?>

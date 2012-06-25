@@ -41,7 +41,7 @@ class LoginPage implements iPage
                 <input type="password" class="span3" tabindex='2' name="password" />
                 <a class="help-inline" href='#' tabindex='6'>Glemt adgangskode?</a>
                 <label class="checkbox">
-                    <input type="checkbox" tabindex='3'> Husk mig p&aring; denne computer
+                    <input type="checkbox" tabindex='3'> Husk mig p&aring; denne computer (todo)
                 </label>
                 <button type="submit" class="btn" tabindex='4'>Log ind</button>
             </form>

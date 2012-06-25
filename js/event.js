@@ -1,6 +1,7 @@
 $('#moreContacts').collapse('hide');
 $('#moreUp').hide();
 $('#moreContactsButton').tooltip();
+$('#venue').tooltip();
 
 function calcPrice()
 {
@@ -43,3 +44,12 @@ function makeMoneyNice(money)
         return out + ",00";
     }
 }
+
+function ReloadContacts()
+	{
+		var venue = $('#venue').val();
+		$('#contact').load('./ajax/contacts.php?venue=' + venue + '&type=contact');
+		$('#contact_technique').load('./ajax/contacts.php?venue=' + venue + '&type=contact_technique');
+		$('#contact_pr').load('./ajax/contacts.php?venue=' + venue + '&type=contact_pr');
+		$('#contact_tickets').load('./ajax/contacts.php?venue=' + venue + '&type=contact_tickets');
+	}

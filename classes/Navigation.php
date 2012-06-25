@@ -11,8 +11,9 @@ class Navigation
         {
             if (preg_match('/'.$user->type.'/',$page['usertype']))
             {
-                if ($page['command'] == '_ANY_')
-                    $page['command'] = '';
+				if ($page['title'] == '') continue; //Don't show pure functional pages in menu
+                //if ($page['command'] == '_ANY_')
+                 //   $page['command'] = ''; //Old code
                 
                 $class = '';
                 if ($page['command'] == $command || $page['command'] == '_ANY_')

@@ -1,5 +1,6 @@
 <?php
 ini_set('display_errors','On'); 
+date_default_timezone_set("Europe/Copenhagen");
 error_reporting(E_ALL);
 include "./classes/User.php";
 include "./classes/Event.php";
@@ -9,11 +10,13 @@ include "./classes/pages/LoginPage.php";
 include "./classes/pages/CreateEventPage.php";
 include "./classes/pages/EventOverviewPage.php";
 include "./classes/pages/EditEventPage.php";
+include "./classes/pages/ErrorPage.php";
 include "./classes/pages/EventPage.php";
 include "./classes/pages/SettingsPage.php";
 include "./classes/pages/LogoutPage.php";
 include "./classes/pages/ViewEventPage.php";
 include "config.php";
+include "pages.php";
 session_start();
 
 
@@ -38,6 +41,9 @@ foreach ($pages as $page)
             $currentpage = $page['page'];
     }
 }
+if (!isset($currentpage))
+	$currentpage = new ErrorPage();
+
 
 $reload = $currentpage->consumePost($command, $params,$currentuser);
 if ($reload !== false)

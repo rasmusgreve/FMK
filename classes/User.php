@@ -14,9 +14,9 @@ class User
     {
         if (!isset($_SESSION['currentuser']))
         {
-            $_SESSION['currentuser'] = self::None();
+            $_SESSION['currentuser'] = serialize(self::None());
         }
-        return $_SESSION['currentuser'];
+        return unserialize($_SESSION['currentuser']);
     }
     
     private function __construct($type, $id = 0, $username = '', $email = '', $corresponding_id = null)
@@ -42,7 +42,7 @@ class User
             return new User(self::USERTYPE_NONE);
         $row = mysql_fetch_assoc($query);
         $newUser = new User($row['type'],$row['id'],$row['username'],$row['email'],$row['corresponding_id']);
-        $_SESSION['currentuser'] = $newUser;
+        $_SESSION['currentuser'] = serialize($newUser);
         return $newUser;
     }
 }
